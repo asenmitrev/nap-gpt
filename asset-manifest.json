@@ -1,15 +1,16 @@
 {
   "files": {
-    "main.css": "/nap-gpt/static/css/main.e4fc3287.css",
-    "main.js": "/nap-gpt/static/js/main.9c7a9d86.js",
+    "main.css": "/nap-gpt/static/css/main.f243892b.css",
+    "main.js": "/nap-gpt/static/js/main.7ac2ecb8.js",
     "static/js/787.fa039871.chunk.js": "/nap-gpt/static/js/787.fa039871.chunk.js",
     "index.html": "/nap-gpt/index.html",
-    "main.e4fc3287.css.map": "/nap-gpt/static/css/main.e4fc3287.css.map",
-    "main.9c7a9d86.js.map": "/nap-gpt/static/js/main.9c7a9d86.js.map",
+    "static/media/me.webp": "/nap-gpt/static/media/me.8fba4fed8fdb9944b8b0.webp",
+    "main.f243892b.css.map": "/nap-gpt/static/css/main.f243892b.css.map",
+    "main.7ac2ecb8.js.map": "/nap-gpt/static/js/main.7ac2ecb8.js.map",
     "787.fa039871.chunk.js.map": "/nap-gpt/static/js/787.fa039871.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e4fc3287.css",
-    "static/js/main.9c7a9d86.js"
+    "static/css/main.f243892b.css",
+    "static/js/main.7ac2ecb8.js"
   ]
 }
