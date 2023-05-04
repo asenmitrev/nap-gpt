@@ -35,10 +35,22 @@ const firstAnswer = [
   "мога",
   "да",
   "ви",
-  "помогна",
-  "днес?",
+  "бъда",
+  "полезен?",
 ];
-const obedna = ["В", "обедна", "почивка", "от", "12:00", "до", "13:00"];
+const obedna = [
+  "В",
+  "обедна",
+  "почивка",
+  "сме",
+  "от",
+  "12:00ч.",
+  "до",
+  "13:00ч.",
+  "Моля",
+  "заповядайте",
+  "по-късно.",
+];
 
 const App = () => {
   const [responseList, setResponseList] = useState<ResponseInterface[]>([]);
@@ -120,7 +132,7 @@ const App = () => {
   };
 
   const sendAnswer = (prompt: string) => {
-    if (new Date().getHours() === 12) {
+    if (new Date().getHours() === 22) {
       getGPTResult(prompt, obedna);
     } else {
       getGPTResult(prompt, BestAnswer);
