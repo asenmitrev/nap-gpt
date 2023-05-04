@@ -111,7 +111,7 @@ const App = () => {
 
     let uniqueId: string;
     // Add the self prompt to the response list
-    prompt && addResponse(true, prompt);
+    prompt && addResponse(true, prompt.replace(/(<br>)+$/, '').replace(/<br><br>/g, '\n\r'));
     uniqueId = addResponse(false);
     await delay(50);
 

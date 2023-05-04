@@ -41,7 +41,7 @@ const PromptResponseList: FC<PromptResponseListProps> = ({ responseList }) => {
             }
             id={responseData.id}
           >
-            {responseData.response}
+            <pre>{responseData.response?.trim()}</pre>
           </div>
         </div>
       ))}
