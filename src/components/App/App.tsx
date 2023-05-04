@@ -38,6 +38,7 @@ const firstAnswer = [
   "помогна",
   "днес?",
 ];
+const obedna = ["В", "обедна", "почивка", "от", "12:00", "до", "13:00"];
 
 const App = () => {
   const [responseList, setResponseList] = useState<ResponseInterface[]>([]);
@@ -118,6 +119,14 @@ const App = () => {
     }
   };
 
+  const sendAnswer = (prompt: string) => {
+    if (new Date().getHours() === 12) {
+      getGPTResult(prompt, obedna);
+    } else {
+      getGPTResult(prompt, BestAnswer);
+    }
+  };
+
   return (
     <div className="App">
       <div id="response-list">
@@ -126,7 +135,7 @@ const App = () => {
       <div id="input-container">
         <PromptInput
           prompt={prompt}
-          onSubmit={() => getGPTResult(prompt, BestAnswer)}
+          onSubmit={() => sendAnswer(prompt)}
           key="prompt-input"
           updatePrompt={(prompt) => setPrompt(prompt)}
         />
@@ -134,7 +143,7 @@ const App = () => {
           id="submit-button"
           disabled={isLoading}
           className={isLoading ? "loading" : ""}
-          onClick={() => getGPTResult(prompt, BestAnswer)}
+          onClick={() => sendAnswer(prompt)}
         ></button>
       </div>
     </div>
