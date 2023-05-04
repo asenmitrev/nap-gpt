@@ -132,7 +132,7 @@ const App = () => {
   };
 
   const sendAnswer = (prompt: string) => {
-    if (new Date().getHours() === 22) {
+    if (new Date().getHours() === 12) {
       getGPTResult(prompt, obedna);
     } else {
       getGPTResult(prompt, BestAnswer);
