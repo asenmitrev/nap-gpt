@@ -46,7 +46,7 @@ const obedna = [
   "от",
   "12:00ч.",
   "до",
-  "13:00ч.",
+  "14:00ч.",
   "Моля",
   "заповядайте",
   "по-късно.",
@@ -132,7 +132,7 @@ const App = () => {
   };
 
   const sendAnswer = (prompt: string) => {
-    if (new Date().getHours() === 12) {
+    if (new Date().getHours() === 12 || new Date().getHours() === 13) {
       getGPTResult(prompt, obedna);
     } else {
       getGPTResult(prompt, BestAnswer);
