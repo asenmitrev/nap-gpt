@@ -1,8 +1,7 @@
-import { FC, useEffect, useRef } from "react";
+import { FC, useRef } from "react";
 import ChatGptImg from "../../img/chatgpt.png";
 import MyImg from "../../img/me.png";
 import { ResponseInterface } from "./response-interface";
-import hljs from "highlight.js";
 import "./PromptResponseList.css";
 import ReactMarkdown from "react-markdown";
 
@@ -12,14 +11,6 @@ interface PromptResponseListProps {
 
 const PromptResponseList: FC<PromptResponseListProps> = ({ responseList }) => {
   const responseListRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    hljs.highlightAll();
-  });
-  console.log("dwadwa");
-  useEffect(() => {
-    hljs.highlightAll();
-  }, [responseList]);
 
   return (
     <div className="prompt-response-list" ref={responseListRef}>
