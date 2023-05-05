@@ -51,6 +51,7 @@ const obedna = [
   "в",
   "три!",
 ];
+const gisheAnswer = ["Вижте", "на", "гише", "36!"];
 
 const App = () => {
   const [responseList, setResponseList] = useState<ResponseInterface[]>([]);
@@ -144,10 +145,13 @@ const App = () => {
   };
 
   const sendAnswer = (prompt: string) => {
+    const random = Math.random();
     if (new Date().getHours() === 12 || new Date().getHours() === 13) {
       getGPTResult(prompt, obedna);
-    } else {
+    } else if (random < 0.75) {
       getGPTResult(prompt, BestAnswer);
+    } else {
+      getGPTResult(prompt, gisheAnswer);
     }
   };
 
