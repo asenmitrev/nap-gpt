@@ -68,6 +68,12 @@ const App = () => {
     getGPTResult("", firstAnswer);
   }, []);
 
+  const htmlToText = (html: string) => {
+    const temp = document.createElement("div");
+    temp.innerHTML = html;
+    return temp.textContent ?? "";
+  };
+
   const delay = (ms: number) => {
     return new Promise((resolve) => setTimeout(resolve, ms));
   };
@@ -111,7 +117,13 @@ const App = () => {
 
     let uniqueId: string;
     // Add the self prompt to the response list
-    prompt && addResponse(true, prompt.replace(/(<br>)+$/, '').replace(/<br><br>/g, '\n\r'));
+    prompt &&
+      addResponse(
+        true,
+        htmlToText(prompt)
+          .replace(/(<br>)+$/, "")
+          .replace(/<br><br>/g, "\n\r")
+      );
     uniqueId = addResponse(false);
     await delay(50);
 

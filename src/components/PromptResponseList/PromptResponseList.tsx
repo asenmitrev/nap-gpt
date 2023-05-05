@@ -4,6 +4,7 @@ import MyImg from "../../img/me.png";
 import { ResponseInterface } from "./response-interface";
 import hljs from "highlight.js";
 import "./PromptResponseList.css";
+import ReactMarkdown from "react-markdown";
 
 interface PromptResponseListProps {
   responseList: ResponseInterface[];
@@ -15,7 +16,7 @@ const PromptResponseList: FC<PromptResponseListProps> = ({ responseList }) => {
   useEffect(() => {
     hljs.highlightAll();
   });
-
+  console.log("dwadwa");
   useEffect(() => {
     hljs.highlightAll();
   }, [responseList]);
@@ -41,7 +42,9 @@ const PromptResponseList: FC<PromptResponseListProps> = ({ responseList }) => {
             }
             id={responseData.id}
           >
-            <pre>{responseData.response?.trim()}</pre>
+            <pre>
+              <ReactMarkdown children={responseData.response?.trim() ?? ""} />
+            </pre>
           </div>
         </div>
       ))}
