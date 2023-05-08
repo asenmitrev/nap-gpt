@@ -4,7 +4,6 @@ import "./App.css";
 import { ResponseInterface } from "../PromptResponseList/response-interface";
 import PromptResponseList from "../PromptResponseList/PromptResponseList";
 
-const BestAnswer = ["Тук", "не", "е", "информация!"];
 const firstAnswer = [
   "Здравейте!",
   "Аз",
@@ -51,7 +50,17 @@ const obedna = [
   "в",
   "три!",
 ];
-const gisheAnswer = ["Вижте", "на", "гише", "36!"];
+const answers = [
+  "Вижте на гише 36!",
+  "Тук не е информация!",
+  "Моля, първо попълнете декларация 41-Б и изтеглете номерче.",
+  "Това което питате е ясно описано на нашия сайт.",
+  "Колежката е отпуска тази седмица, аз не мога да ви помогна.",
+  "Моля чуйте се с колежката Атанасова от Слатина, тя ще ви обясни как да процедирате.",
+  "Изпуснали сте срока!",
+  "Това е извън компетенцията ми, моля консултирайте се с вашия счетоводител.",
+  "Ама моля ви се, не ме занимавайте с такива неща, имам работа!",
+];
 
 const App = () => {
   const [responseList, setResponseList] = useState<ResponseInterface[]>([]);
@@ -144,14 +153,19 @@ const App = () => {
     }
   };
 
+  const sendRandomAnswer = (prompt: string) => {
+    const randomIndex = Math.floor(Math.random() * answers.length); // get a random index value
+    const randomAnswer = answers[randomIndex]; // get the random item from the array
+
+    getGPTResult(prompt, randomAnswer.split(" "));
+  };
+
   const sendAnswer = (prompt: string) => {
     const random = Math.random();
     if (new Date().getHours() === 12 || new Date().getHours() === 13) {
       getGPTResult(prompt, obedna);
     } else if (random < 0.75) {
-      getGPTResult(prompt, BestAnswer);
-    } else {
-      getGPTResult(prompt, gisheAnswer);
+      sendRandomAnswer(prompt);
     }
   };
 

@@ -1,4 +1,4 @@
-import { FC, useRef } from "react";
+import { FC, useEffect, useRef } from "react";
 import ChatGptImg from "../../img/chatgpt.png";
 import MyImg from "../../img/me.png";
 import { ResponseInterface } from "./response-interface";
@@ -11,6 +11,11 @@ interface PromptResponseListProps {
 
 const PromptResponseList: FC<PromptResponseListProps> = ({ responseList }) => {
   const responseListRef = useRef<HTMLDivElement>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    scrollRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [responseList]);
 
   return (
     <div className="prompt-response-list" ref={responseListRef}>
@@ -39,6 +44,7 @@ const PromptResponseList: FC<PromptResponseListProps> = ({ responseList }) => {
           </div>
         </div>
       ))}
+      <div ref={scrollRef} />
     </div>
   );
 };
