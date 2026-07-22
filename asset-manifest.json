@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/nap-gpt/static/css/main.7e37e75c.css",
-    "main.js": "/nap-gpt/static/js/main.5586d7a4.js",
+    "main.css": "/nap-gpt/static/css/main.46703e67.css",
+    "main.js": "/nap-gpt/static/js/main.5ca436e7.js",
     "static/js/787.fa039871.chunk.js": "/nap-gpt/static/js/787.fa039871.chunk.js",
     "index.html": "/nap-gpt/index.html",
-    "main.7e37e75c.css.map": "/nap-gpt/static/css/main.7e37e75c.css.map",
-    "main.5586d7a4.js.map": "/nap-gpt/static/js/main.5586d7a4.js.map",
+    "main.46703e67.css.map": "/nap-gpt/static/css/main.46703e67.css.map",
+    "main.5ca436e7.js.map": "/nap-gpt/static/js/main.5ca436e7.js.map",
     "787.fa039871.chunk.js.map": "/nap-gpt/static/js/787.fa039871.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7e37e75c.css",
-    "static/js/main.5586d7a4.js"
+    "static/css/main.46703e67.css",
+    "static/js/main.5ca436e7.js"
   ]
 }
