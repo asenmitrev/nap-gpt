@@ -19,31 +19,49 @@ const PromptResponseList: FC<PromptResponseListProps> = ({ responseList }) => {
 
   return (
     <div className="prompt-response-list" ref={responseListRef}>
-      {responseList.map((responseData) => (
-        <div
-          className={
-            "response-container " +
-            (responseData.selfFlag ? "my-question" : "chatgpt-response")
-          }
-          key={responseData.id}
-        >
-          <img
-            className="avatar-image"
-            src={responseData.selfFlag ? MyImg : ChatGptImg}
-            alt="avatar"
-          />
+      {responseList.map((responseData) => {
+        const text = responseData.response?.trim() ?? "";
+
+        return (
           <div
             className={
-              (responseData.error ? "error-response " : "") + "prompt-content"
+              "response-container " +
+              (responseData.selfFlag ? "my-question" : "chatgpt-response")
             }
-            id={responseData.id}
+            key={responseData.id}
           >
-            <pre>
-              <ReactMarkdown children={responseData.response?.trim() ?? ""} />
-            </pre>
+            <img
+              className="avatar-image"
+              src={responseData.selfFlag ? MyImg : ChatGptImg}
+              alt="avatar"
+            />
+            <div className="response-body">
+              <span className="response-author">
+                {responseData.selfFlag ? "Вие" : "НАП ИИ"}
+              </span>
+              <div
+                className={
+                  (responseData.error ? "error-response " : "") +
+                  "prompt-content"
+                }
+                id={responseData.id}
+              >
+                {text ? (
+                  <pre>
+                    <ReactMarkdown children={text} />
+                  </pre>
+                ) : (
+                  <span className="typing-indicator" aria-label="пише...">
+                    <i />
+                    <i />
+                    <i />
+                  </span>
+                )}
+              </div>
+            </div>
           </div>
-        </div>
-      ))}
+        );
+      })}
       <div ref={scrollRef} />
     </div>
   );

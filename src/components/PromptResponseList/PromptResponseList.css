@@ -1,68 +1,165 @@
-/* Style for each response element in the list */
-.response-container {
-  margin-bottom: 10px;
-  color: white;
-  padding: 15px 200px;
-  font-size: 1rem;
-  display: flex;
+.prompt-response-list {
+  padding: 20px 0 8px;
 }
 
-@media screen and (max-width: 998px) {
-  .response-container {
-    padding: 15px 50px;
+/* Style for each response element in the list */
+.response-container {
+  display: flex;
+  gap: 14px;
+  width: 100%;
+  max-width: var(--content-width);
+  margin: 0 auto 4px;
+  padding: 16px 20px;
+  box-sizing: border-box;
+  color: var(--text);
+  font-size: 0.98rem;
+  line-height: 1.65;
+  border-radius: var(--radius);
+  animation: message-in 0.28s ease-out both;
+}
+
+@keyframes message-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
   }
 }
 
+.chatgpt-response {
+  background: linear-gradient(
+    180deg,
+    rgba(30, 33, 48, 0.9),
+    rgba(30, 33, 48, 0.55)
+  );
+  border: 1px solid var(--border);
+}
+
+.my-question {
+  background: transparent;
+}
+
 @media screen and (max-width: 768px) {
+  .prompt-response-list {
+    padding: 14px 12px 4px;
+  }
+
   .response-container {
-    padding: 15px 30px;
+    padding: 14px;
+    gap: 10px;
+    font-size: 0.94rem;
   }
 }
 
 .response-container .avatar-image {
-  width: 30px;
-  height: 30px;
-  margin-right: 15px;
+  flex: 0 0 auto;
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  object-fit: cover;
+  box-shadow: 0 0 0 1px var(--border-strong);
 }
 
-.response-container .response-content {
+.response-body {
   display: flex;
   flex-direction: column;
+  min-width: 0;
+  flex: 1;
+}
+
+.response-author {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 2px;
 }
 
 .response-container pre {
   max-width: 100%;
   margin: 0 !important;
   white-space: break-spaces;
+  word-break: break-word;
 }
 
 .response-container .prompt-content {
   background: transparent !important;
-  color: white;
+  color: var(--text);
   padding: 0 !important;
-  margin-top: 5px;
 }
 
-.response-container .prompt-content p:first-child {
-  margin-top: 0;
+.response-container .prompt-content p {
+  margin: 0 0 0.6em;
+}
+
+.response-container .prompt-content p:last-child {
+  margin-bottom: 0;
+}
+
+.response-container .prompt-content a {
+  color: var(--accent-hover);
+}
+
+/* Typing indicator shown before the first word arrives */
+.typing-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  height: 1.65em;
+}
+
+.typing-indicator i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--text-muted);
+  animation: typing-bounce 1.1s infinite ease-in-out;
+}
+
+.typing-indicator i:nth-child(2) {
+  animation-delay: 0.16s;
+}
+
+.typing-indicator i:nth-child(3) {
+  animation-delay: 0.32s;
+}
+
+@keyframes typing-bounce {
+  0%,
+  70%,
+  100% {
+    opacity: 0.3;
+    transform: translateY(0);
+  }
+  35% {
+    opacity: 1;
+    transform: translateY(-3px);
+  }
 }
 
 .ai-image {
   width: 500px;
   height: auto;
+  max-width: 100%;
 }
 
 .error-response {
-  color: rgb(220, 0, 0) !important;
+  color: #ff6b6b !important;
 }
 
 /* Override hljs to match for chatgpt */
 .hljs {
-  background: rgb(0, 0, 0) !important;
-  color: white !important;
+  background: rgba(0, 0, 0, 0.55) !important;
+  color: var(--text) !important;
   display: block;
-  padding: 10px;
-  border-radius: 6px;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  overflow-x: auto;
 }
 
 .hljs-section,

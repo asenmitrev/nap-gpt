@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import PromptInput from "../PromptInput/PromptInput";
+import ChatGptImg from "../../img/chatgpt.png";
 import "./App.css";
 import { ResponseInterface } from "../PromptResponseList/response-interface";
 import PromptResponseList from "../PromptResponseList/PromptResponseList";
@@ -138,13 +139,13 @@ const App = () => {
           .replace(/<br><br>/g, "\n\r")
       );
     uniqueId = addResponse(false);
-    await delay(50);
+    await delay(250);
 
     try {
       let responseSoFar = "";
       for (const word of answer) {
         responseSoFar += ` ${word}`;
-        await delay(200);
+        await delay(40);
         updateResponse(uniqueId, {
           response: responseSoFar,
         });
@@ -174,22 +175,38 @@ const App = () => {
 
   return (
     <div className="App">
+      <header id="app-header">
+        <img src={ChatGptImg} className="header-logo" alt="НАП" />
+        <div className="header-titles">
+          <span className="header-title">ИИ Асистентът на НАП</span>
+          <span className="header-subtitle">
+            <i className="status-dot" />
+            на линия (без обедна почивка)
+          </span>
+        </div>
+      </header>
       <div id="response-list">
         <PromptResponseList responseList={responseList} key="response-list" />
       </div>
-      <div id="input-container">
-        <PromptInput
-          prompt={prompt}
-          onSubmit={() => sendAnswer(prompt)}
-          key="prompt-input"
-          updatePrompt={(prompt) => setPrompt(prompt)}
-        />
-        <button
-          id="submit-button"
-          disabled={isLoading}
-          className={isLoading ? "loading" : ""}
-          onClick={() => sendAnswer(prompt)}
-        ></button>
+      <div id="composer">
+        <div id="input-container">
+          <PromptInput
+            prompt={prompt}
+            onSubmit={() => sendAnswer(prompt)}
+            key="prompt-input"
+            updatePrompt={(prompt) => setPrompt(prompt)}
+          />
+          <button
+            id="submit-button"
+            disabled={isLoading}
+            className={isLoading ? "loading" : ""}
+            aria-label="Изпрати"
+            onClick={() => sendAnswer(prompt)}
+          ></button>
+        </div>
+        <p id="composer-hint">
+          Асистентът може да греши. И да мълчи. И да е в обедна почивка.
+        </p>
       </div>
     </div>
   );

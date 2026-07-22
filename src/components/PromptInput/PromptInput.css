@@ -1,13 +1,33 @@
 /* Style for the prompt input */
 #prompt-input {
-    flex-grow: 1;
-    padding: 10px;
-    border-radius: 5px;
-    min-height: 20px;
-    color: white;
-    overflow: auto;
+  flex-grow: 1;
+  padding: 8px 10px;
+  min-height: 22px;
+  max-height: 200px;
+  color: var(--text);
+  font-size: 1rem;
+  line-height: 1.5;
+  overflow-y: auto;
+  outline: none;
+  word-break: break-word;
 }
 
 #prompt-input:focus {
-    outline: none !important;
+  outline: none !important;
+}
+
+/* Placeholder — contenteditable has none of its own */
+#prompt-input:empty::before {
+  content: attr(data-placeholder);
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+#prompt-input::-webkit-scrollbar {
+  width: 8px;
+}
+
+#prompt-input::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.14);
+  border-radius: 8px;
 }
