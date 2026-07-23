@@ -80,6 +80,7 @@ const App = () => {
   };
   useEffect(() => {
     getGPTResult("", firstAnswer);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const htmlToText = (html: string) => {
